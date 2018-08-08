@@ -13,10 +13,10 @@ import sys
 #             
 #   
 max_queue_size = 20 
-os.system('sysctl -w net.mptcp.mptcp_path_manager=fullmesh ')
-os.system('modprobe mptcp_rr && sysctl -w net.mptcp.mptcp_scheduler=roundrobin ')
-os.system('modprobe mptcp_olia && sysctl -w net.ipv4.tcp_congestion_control=olia ')
-os.system('echo 3 | sudo tee /sys/module/mptcp_fullmesh/parameters/num_subflows') 
+#os.system('sysctl -w net.mptcp.mptcp_path_manager=fullmesh ')
+#os.system('modprobe mptcp_rr && sysctl -w net.mptcp.mptcp_scheduler=roundrobin ')
+#os.system('modprobe mptcp_olia && sysctl -w net.ipv4.tcp_congestion_control=olia ')
+#os.system('echo 3 | sudo tee /sys/module/mptcp_fullmesh/parameters/num_subflows') 
 net = Mininet( cleanup=True )
 h1 = net.addHost('h1',ip='10.0.1.1')
 r1 = net.addHost('r1',ip='10.0.1.2')
@@ -50,8 +50,8 @@ h2.cmd("route add default gw 10.0.5.1")
 
 net.start()
 time.sleep(1)
-p2 = h2.popen("./externaludp/mytcpserver -h10.0.5.2 -p1234")
-p1=h1.popen("./externaludp/fileclient -h10.0.5.2 -p1234")
+p2 = h2.popen("./tcpudp/mytcpserver -h10.0.5.2 -p1234")
+p1=h1.popen("./tcpudp/fileclient -h10.0.5.2 -p1234")
 while 1:
     time.sleep(1)
     ret=subprocess.Popen.poll(p1)
