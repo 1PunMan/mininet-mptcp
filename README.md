@@ -1,10 +1,10 @@
 # mininet-mptcp
 Some experiment mptcp test on mininet  
-please substitue you own tcp client serser. Of course, the code of mytcpserver mytcpserver can get at https://github.com/sonyangchang/mininet-test/tree/master/tcpudp   
+please substitue you own tcp client server. Of course, the code of mytcpserver fileclient can get at https://github.com/sonyangchang/mininet-test/tree/master/tcpudp   
 p2 = h2.popen("./tcpudp/mytcpserver -h10.0.2.2 -p1234")  
 p1=h1.popen("./tcpudp/fileclient -h10.0.2.2 -p1234")  
 And the fileclient send out 10MB data to the server. The flow completion time can get in my_tcp_server_log.txt.  
-results   
+for example  
 mp flow completion time 22473  ms   
 sp   
 44640 ms   
